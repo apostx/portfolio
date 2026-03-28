@@ -1,0 +1,48 @@
+:root {
+  --color-primary: #38bdf8;
+  --color-background: #0a0e27;
+  --color-surface: #151932;
+  --color-text: #f0f9ff;
+  --color-text-secondary: #bae6fd;
+  --color-border: #1e3a5f;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--color-background); color: var(--color-text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+.header { padding: 2rem; background: linear-gradient(to right, var(--color-surface), #1f2139); border-bottom: 2px solid var(--color-primary); }
+.header h1 { font-size: 1.75rem; font-weight: 600; color: var(--color-primary); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.portfolio-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.portfolio-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+}
+
+.portfolio-card-content { padding: 1.5rem; }
+.portfolio-card h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-primary); }
+.portfolio-card p { font-size: 0.875rem; color: var(--color-text-secondary); }
+
+.portfolio-card:hover { border: 1px solid var(--color-primary); box-shadow: 0 0 30px rgba(56, 189, 248, 0.15); }
+
+@media (max-width: 768px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}

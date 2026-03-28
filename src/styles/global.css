@@ -1,0 +1,97 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif);
+  font-size: var(--font-size-base, 16px);
+  line-height: 1.6;
+  color: var(--color-text, #333);
+  background-color: var(--color-background, #fff);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Typography */
+h1 {
+  font-size: var(--font-size-h1, 2.5rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg, 1.5rem);
+  color: var(--color-heading, #000);
+}
+
+h2 {
+  font-size: var(--font-size-h2, 2rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md, 1rem);
+  color: var(--color-heading, #000);
+}
+
+h3 {
+  font-size: var(--font-size-h3, 1.5rem);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm, 0.75rem);
+  color: var(--color-heading, #000);
+}
+
+p {
+  margin-bottom: var(--spacing-md, 1rem);
+}
+
+a {
+  color: var(--color-primary, #007bff);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--color-primary-dark, #0056b3);
+  text-decoration: underline;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md, 1rem);
+}
+
+/* Sections */
+section {
+  padding: var(--spacing-xl, 3rem) var(--spacing-md, 1rem);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    padding: var(--spacing-lg, 1.5rem) var(--spacing-md, 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  section {
+    padding: var(--spacing-md, 1rem);
+  }
+}
