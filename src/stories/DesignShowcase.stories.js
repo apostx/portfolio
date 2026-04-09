@@ -1,7 +1,7 @@
-import '../components/Header/Header.css';
-import '../components/PersonalCard/PersonalCard.css';
-import '../components/PortfolioGrid/PortfolioGrid.css';
-import '../components/PortfolioCard/PortfolioCard.css';
+// Note: component CSS is intentionally NOT imported here. Each design file in
+// src/styles/designs/ is self-contained and defines all layout/card/header
+// styling from scratch. Importing component CSS would add a baseline layer
+// that bleeds through and flattens the visual differences between designs.
 import { Header } from '../components/Header/Header.js';
 import { PersonalCard } from '../components/PersonalCard/PersonalCard.js';
 import { PortfolioGrid } from '../components/PortfolioGrid/PortfolioGrid.js';
