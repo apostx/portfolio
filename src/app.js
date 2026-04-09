@@ -40,6 +40,22 @@ async function initApp() {
   }
 }
 
+// Vite bundles all design CSS files as assets and gives us their final hashed URLs.
+// This works in both dev and prod without needing to duplicate files into public/.
+const designUrls = import.meta.glob('./styles/designs/*.css', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+});
+
+// Build a name → URL lookup: { 'design-11-glassmorphism': '/assets/design-11-glassmorphism-abc123.css', ... }
+const designMap = Object.fromEntries(
+  Object.entries(designUrls).map(([path, url]) => {
+    const name = path.split('/').pop().replace('.css', '');
+    return [name, url];
+  })
+);
+
 const NEW_DESIGNS = [
   'design-11-glassmorphism',
   'design-12-neobrutalism',
@@ -60,14 +76,19 @@ function resolveTheme(configTheme) {
 }
 
 function applyTheme(themeName) {
+  const href = designMap[themeName];
+  if (!href) {
+    console.warn(`Theme "${themeName}" not found. Available:`, Object.keys(designMap));
+    return;
+  }
+
+  // Remove any existing design stylesheets
+  document.querySelectorAll('link[data-theme]').forEach((link) => link.remove());
+
   const themeLink = document.createElement('link');
   themeLink.rel = 'stylesheet';
-  themeLink.href = `/styles/designs/${themeName}.css`;
-  
-  // Remove any existing design stylesheets
-  const existingLinks = document.querySelectorAll('link[href*="/styles/designs/"]');
-  existingLinks.forEach(link => link.remove());
-  
+  themeLink.href = href;
+  themeLink.setAttribute('data-theme', themeName);
   document.head.appendChild(themeLink);
 }
 
