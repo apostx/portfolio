@@ -10,8 +10,9 @@ async function initApp() {
     const config = await ConfigService.load();
     console.log('Config loaded:', config);
 
-    // Apply theme
-    applyTheme(config.theme);
+    // Apply theme — ?design=1..5 selects from the 5 new designs, otherwise use config default
+    const theme = resolveTheme(config.theme);
+    applyTheme(theme);
 
     // Fetch portfolio items
     const portfolioItems = await SheetsService.fetchPortfolioItems(config);
@@ -37,6 +38,25 @@ async function initApp() {
     console.error('Error initializing app:', error);
     document.getElementById('app').innerHTML = `<div class="error"><p>Error loading portfolio: ${error.message}</p></div>`;
   }
+}
+
+const NEW_DESIGNS = [
+  'design-11-glassmorphism',
+  'design-12-neobrutalism',
+  'design-13-bento-minimal',
+  'design-14-aurora-mesh',
+  'design-15-editorial-mono',
+];
+
+function resolveTheme(configTheme) {
+  const param = new URLSearchParams(window.location.search).get('design');
+  if (param !== null) {
+    const index = parseInt(param, 10);
+    if (index >= 1 && index <= NEW_DESIGNS.length) {
+      return NEW_DESIGNS[index - 1];
+    }
+  }
+  return configTheme;
 }
 
 function applyTheme(themeName) {
