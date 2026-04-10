@@ -61,7 +61,7 @@ const NEW_DESIGNS = [
   'design-12-neobrutalism',
   'design-13-bento-minimal',
   'design-14-aurora-mesh',
-  'design-15-editorial-mono',
+  'design-09-image-masonry',
 ];
 
 function resolveTheme(configTheme) {
