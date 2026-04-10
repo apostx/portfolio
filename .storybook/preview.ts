@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/html';
+import type { Preview } from '@storybook/react';
 
 import '../src/styles/global.css';
 import '../src/styles/tokens.css';
