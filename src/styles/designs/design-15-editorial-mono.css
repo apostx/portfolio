@@ -78,7 +78,7 @@ body {
 .header-links {
   margin-top: 2rem;
   justify-content: flex-start;
-  gap: 0;
+  gap: 0.5rem;
   border-top: 1px solid #0a0a0a;
   padding-top: 1rem;
 }
@@ -91,7 +91,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   padding: 0.25rem 0;
-  margin: 0 0.5rem 0 0;
+  margin: 0;
   border-bottom: 2px solid transparent;
   transition: all 0.25s ease;
 }
@@ -125,12 +125,17 @@ body {
 .personal-field {
   background: transparent;
   border-radius: 0;
-  padding: 1.5rem 1.5rem 1.5rem 0;
+  padding: 1.5rem;
   border-right: 1px solid rgba(0, 0, 0, 0.15);
   transition: none;
 }
 
+.personal-field:first-child {
+  padding-left: 0;
+}
+
 .personal-field:last-child {
+  padding-right: 0;
   border-right: none;
 }
 
